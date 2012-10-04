@@ -1,5 +1,5 @@
-brunch-with-brunch
+brunch-with-style
 ==================
 
-An empty brunch skeleton without any other dependencies.
+A minimal brunch skeleton which includes support for stylus, coffee script, and jade.
 
