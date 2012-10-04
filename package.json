@@ -22,8 +22,6 @@
 	"css-brunch": ">= 1.0 < 1.5",
 	"stylus-brunch": ">= 1.0 < 1.5",
 
-	"jade-brunch": ">= 1.0 < 1.5",
-
 	"uglify-js-brunch": ">= 1.0 < 1.5",
 	"clean-css-brunch": ">= 1.0 < 1.5"
   },
