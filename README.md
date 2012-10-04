@@ -1,5 +1,6 @@
-brunch-with-style
-==================
+Project Name
+============
 
-A minimal brunch skeleton which includes support for stylus, coffee script, and jade.
+Here, you can include details about what your project is and how it is
+supposed to be used.
 
