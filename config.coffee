@@ -10,7 +10,7 @@ exports.config =
       order:
         before: [
           'vendor/scripts/jquery-1.9.1.js',
-          'vendor/scripts/underscore.js',
+          'vendor/scripts/lodash.underscore.js',
           'vendor/scripts/backbone.js',
           'vendor/scripts/backbone.marionette.js',
         ]
