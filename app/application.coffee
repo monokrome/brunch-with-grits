@@ -1,6 +1,6 @@
 class Application extends Backbone.Marionette.Application
   initialize: =>
-    @on 'iniitialize:after', @startHistory
+    @on 'initialize:after', @startHistory
 
     @start()
     
