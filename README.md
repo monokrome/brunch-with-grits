@@ -1,23 +1,23 @@
-Brunch With Grits
+Playpen
 =================
 
 What is this project?
 --------------------
 
-This is a brunch skeleton which provides the following tools:
+This is a Brunch skeleton which provides the following tools:
 
-- jQuery
-- Underscore
-- Backbone
-- Marionette
+- [Jade][Jade]
+- [Stylus][Stylus]
+- [CoffeeScript][CoffeeScript]
+- [jQuery][jQuery]
 
 How do I use it?
 ----------------
 
-After installing [brunch][brunch], run the following command to create a new
+After installing [Brunch][Brunch], run the following command to create a new
 project in a directory named *example*:
 
-    brunch new example -s git://github.com/monokrome/brunch-with-grits.git
+    brunch new example -s git://github.com/Kroogs/playpen.git
 
 *NOTE: You can replace the word example with whichever directory name you'd
 like to use for your project.*
@@ -28,20 +28,6 @@ it like so:
     cd example
     npm install
 
-If it all worked out, you should be able to build all libraries into the
-**public/javascripts/vendor.js** with the following command:
-
-    brunch build
-
-You can also have [brunch][brunch] automatically minify the output with:
-
-    brunch build --optimize
-
-If you prefer to leave a process constantly watching your code for changes,
-you can use the following command:
-
-    brunch watch
-
 Having a static server hosting your public directory is sometimes useful for
 development. You can do this by running the following command:
 
@@ -50,7 +36,11 @@ development. You can do this by running the following command:
 This will run a local server on port 3333. Once it's running, you can visit
 your application at [http://localhost:3333](http://localhost:3333).
 
-If you have any other questions about using [brunch][brunch], [read more
-about it here][brunch].
+If you have any other questions about using [Brunch][Brunch], [read more
+about it here][Brunch].
 
-[brunch]: http://brunch.io "http://brunch.io"
+[Brunch]: http://brunch.io "Brunch"
+[Jade]: http://jade-lang.com/ "Jade"
+[Stylus]: http://learnboost.github.io/stylus/ "Stylus"
+[CoffeeScript]: http://coffeescript.org/ "CoffeeScript"
+[jQuery]: http://jquery.com/ "jQuery"
