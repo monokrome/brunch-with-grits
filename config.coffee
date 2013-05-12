@@ -8,8 +8,8 @@ exports.config =
   files:
     javascripts:
       joinTo:
-        'javascripts/app.js': /^app/
-        'javascripts/vendor.js': /^vendor/
+        'scripts/app.js': /^app/
+        'scripts/vendor.js': /^vendor/
       order:
         before: [
           'vendor/scripts/jquery-1.9.1.js'
@@ -17,8 +17,8 @@ exports.config =
 
     stylesheets:
       joinTo:
-        'stylesheets/app.css': /^app/
-        'stylesheets/vendor.css': /^vendor/
+        'styles/app.css': /^app/
+        'styles/vendor.css': /^vendor/
       order:
         before: []
         after: []
