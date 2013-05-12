@@ -4,8 +4,7 @@ Playpen
 What is this project?
 --------------------
 
-This is a Brunch skeleton for rapid interface prototyping and general html/css/js
-shenanigans and provides the following tools:
+This is a Brunch skeleton for rapid prototyping in html/css/js using the following:
 
 - [Jade][Jade]
 - [Stylus][Stylus]
