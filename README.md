@@ -4,7 +4,8 @@ Playpen
 What is this project?
 --------------------
 
-This is a Brunch skeleton which provides the following tools:
+This is a Brunch skeleton for rapid interface prototyping and general html/css/js
+shenanigans and provides the following tools:
 
 - [Jade][Jade]
 - [Stylus][Stylus]
@@ -28,16 +29,13 @@ it like so:
     cd example
     npm install
 
-Having a static server hosting your public directory is sometimes useful for
-development. You can do this by running the following command:
+You can run a server that will live-update the client as you edit the project
+by running the following command:
 
-    brunch watch --server
+    npm start
 
-This will run a local server on port 3333. Once it's running, you can visit
-your application at [http://localhost:3333](http://localhost:3333).
-
-If you have any other questions about using [Brunch][Brunch], [read more
-about it here][Brunch].
+Once it's running, you can visit your application at
+[http://localhost:3333](http://localhost:3333).
 
 [Brunch]: http://brunch.io "Brunch"
 [Jade]: http://jade-lang.com/ "Jade"
