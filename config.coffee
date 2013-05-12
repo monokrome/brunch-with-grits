@@ -1,4 +1,10 @@
 exports.config =
+  plugins:
+    jade:
+      options:
+        pretty: yes
+    static_jade:
+      extension: '.jade'
   files:
     javascripts:
       joinTo:
@@ -16,6 +22,3 @@ exports.config =
       order:
         before: []
         after: []
-
-    templates:
-      joinTo: 'javascripts/app.js'
