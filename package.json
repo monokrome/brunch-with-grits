@@ -16,8 +16,6 @@
     "test": "brunch test"
   },
   "dependencies": {
-    "auto-reload-brunch": ">= 1.0 < 1.7",
-
     "javascript-brunch": ">= 1.0 < 1.7",
     "coffee-script-brunch": ">= 1.0 < 1.7",
 
@@ -30,5 +28,6 @@
     "clean-css-brunch": ">= 1.0 < 1.7"
   },
   "devDependencies": {
+    "auto-reload-brunch": ">= 1.0 < 1.7"
   }
 }
