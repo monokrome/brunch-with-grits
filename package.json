@@ -16,8 +16,12 @@
     "test": "brunch test"
   },
   "dependencies": {
+    "auto-reload-brunch": ">= 1.0 < 1.7",
+
     "javascript-brunch": ">= 1.0 < 1.7",
     "coffee-script-brunch": ">= 1.0 < 1.7",
+
+    "jaded-brunch": ">= 1.0 < 1.7",
 
     "css-brunch": ">= 1.0 < 1.7",
     "stylus-brunch": ">= 1.0 < 1.7",
