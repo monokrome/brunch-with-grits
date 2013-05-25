@@ -1,4 +1,4 @@
-Application = require 'application'
+{Application} = require 'application'
 
 jQuery ->
   (new Application).initialize()
