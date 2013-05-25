@@ -1,5 +1,4 @@
 Application = require 'application'
 
 jQuery ->
-  application = new Application
-  application.initialize()
+  (new Application).initialize()
