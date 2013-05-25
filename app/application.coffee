@@ -11,18 +11,16 @@ class Application extends Backbone.Marionette.Application
   startHistory: (options) -> Backbone.history.start()
 
   initializeModules: ->
-    @modules = []
-
     for name in modules
       module = require name + '/module'
 
-      @modules.push new module()
+      @module name, new module
 
 class Module
+  initialize: ->
+
   constructor: (@module, @app, @backbone, @marionette, @$, @_) ->
     @initialize()
-
-  initialize: ->
 
 module.exports = {
   Application
