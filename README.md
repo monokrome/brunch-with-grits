@@ -4,12 +4,15 @@ Playpen
 What is this project?
 --------------------
 
-This is a Brunch skeleton for rapid prototyping in html/css/js using the following:
+This is a Brunch skeleton for rapid frontend prototyping using the following:
 
 - [Jade][Jade]
 - [Stylus][Stylus]
 - [CoffeeScript][CoffeeScript]
 - [jQuery][jQuery]
+- [Lo-dash][Lo-dash]
+- [Backbone][Backbone]
+- [Marionette][Marionette]
 
 How do I use it?
 ----------------
@@ -41,3 +44,6 @@ Once it's running, you can visit your application at
 [Stylus]: http://learnboost.github.io/stylus/ "Stylus"
 [CoffeeScript]: http://coffeescript.org/ "CoffeeScript"
 [jQuery]: http://jquery.com/ "jQuery"
+[Backbone]: http://backbonejs.org/ "Backbone"
+[Lo-dash]: http://lodash.com/ "Lo-Dash"
+[Marionette]: http://marionettejs.com/ "Marionette"
