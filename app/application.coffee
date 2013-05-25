@@ -4,7 +4,6 @@ class Application extends Backbone.Marionette.Application
 
     @start()
     
-   startHistory: (options) => Backbone.history.start()
+   startHistory: (options) -> Backbone.history.start()
 
 module.exports = Application
-
