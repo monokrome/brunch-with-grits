@@ -15,7 +15,6 @@ exports.config =
           'vendor/scripts/lodash.underscore.js'
           'vendor/scripts/backbone.js'
           'vendor/scripts/backbone.marionette.js'
-
         ]
 
     stylesheets:
