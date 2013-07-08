@@ -4,6 +4,11 @@ exports.config =
       staticPatterns: /^app(\/|\\)(.+)\.jade$/
 
   files:
+    stylesheets:
+      joinTo:
+        'styles/app.css': /^app/
+        'styles/vendor.css': /^vendor/
+
     javascripts:
       joinTo:
         'scripts/app.js': /^app/
@@ -16,8 +21,3 @@ exports.config =
           'vendor/scripts/backbone.js'
           'vendor/scripts/backbone.marionette.js'
         ]
-
-    stylesheets:
-      joinTo:
-        'styles/app.css': /^app/
-        'styles/vendor.css': /^vendor/
