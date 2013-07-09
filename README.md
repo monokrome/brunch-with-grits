@@ -38,7 +38,7 @@ Start a local server:
     make start
 
 Congratulations!  Your application is now running on
-[http://localhost:3333](http://localhost:3333).
+[http://localhost:9999](http://localhost:9999).
 
 [NodeJS]: http://nodejs.org/ "NodeJS"
 [Brunch]: http://brunch.io "Brunch"
