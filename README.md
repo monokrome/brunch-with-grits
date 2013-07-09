@@ -1,44 +1,48 @@
 Playpen
 =================
 
-What is this project?
+What is this?
 --------------------
 
-This is a Brunch skeleton for rapid frontend prototyping using the following:
+A Brunch skeleton specifically for rapid prototyping.
+
+Requires:
+
+- [NodeJS][NodeJS]
+
+Languages:
 
 - [Jade][Jade]
 - [Stylus][Stylus]
 - [CoffeeScript][CoffeeScript]
+
+Libraries:
+
+- [Brunch][Brunch]
 - [jQuery][jQuery]
 - [Lo-dash][Lo-dash]
 - [Backbone][Backbone]
 - [Marionette][Marionette]
+- [Bootstrap][Bootstrap]
 
 How do I use it?
 ----------------
 
-After installing [Brunch][Brunch], run the following command to create a new
-project in a directory named *example*:
+Clone the project:
 
-    brunch new example -s git://github.com/Kroogs/playpen.git
+    git clone git://github.com/Kroogs/playpen.git && cd playpen
 
-*NOTE: You can replace the word example with whichever directory name you'd
-like to use for your project.*
+Once cloning has finished, install dependencies:
 
-After the project has finished being created, you can initialize
-it like so:
+    make
 
-    cd example
-    npm install
+Start a local server:
 
-You can run a server that will live-update the client as you edit the project
-by running the following command:
+    make start
 
-    npm start
+Your application is now running on [http://localhost:3333](http://localhost:3333).
 
-Once it's running, you can visit your application at
-[http://localhost:3333](http://localhost:3333).
-
+[NodeJS]: http://nodejs.org/ "NodeJS"
 [Brunch]: http://brunch.io "Brunch"
 [Jade]: http://jade-lang.com/ "Jade"
 [Stylus]: http://learnboost.github.io/stylus/ "Stylus"
@@ -47,3 +51,4 @@ Once it's running, you can visit your application at
 [Backbone]: http://backbonejs.org/ "Backbone"
 [Lo-dash]: http://lodash.com/ "Lo-Dash"
 [Marionette]: http://marionettejs.com/ "Marionette"
+[Bootstrap]: http://twitter.github.io/bootstrap/ "Bootstrap"
