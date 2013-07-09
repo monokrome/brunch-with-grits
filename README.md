@@ -1,10 +1,8 @@
 Playpen
 =================
 
-What is this?
---------------------
-
 A Brunch skeleton specifically for rapid prototyping.
+--------------------
 
 Requires:
 
