@@ -1,12 +1,7 @@
 Playpen
-=================
+=======
 
-A Brunch skeleton specifically for rapid prototyping.
---------------------
-
-Requires:
-
-- [NodeJS][NodeJS]
+A Brunch skeleton for rapid prototyping.
 
 Languages:
 
@@ -23,14 +18,18 @@ Libraries:
 - [Marionette][Marionette]
 - [Bootstrap][Bootstrap]
 
-How do I use it?
-----------------
+Installation
+------------
 
-Clone the project:
+Requirements:
+
+- [NodeJS][NodeJS]
+
+Clone the project and cd to it:
 
     git clone git://github.com/Kroogs/playpen.git && cd playpen
 
-Once cloning has finished, install dependencies:
+Install dependencies:
 
     make
 
@@ -38,7 +37,8 @@ Start a local server:
 
     make start
 
-Your application is now running on [http://localhost:3333](http://localhost:3333).
+Congratulations!  Your application is now running on
+[http://localhost:3333](http://localhost:3333).
 
 [NodeJS]: http://nodejs.org/ "NodeJS"
 [Brunch]: http://brunch.io "Brunch"
