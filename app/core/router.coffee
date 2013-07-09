@@ -1,4 +1,4 @@
-class CoreRouter
+class CoreRouter extends Marionette.AppRouter
   constructor: ->
     console.log 'routing', @
 

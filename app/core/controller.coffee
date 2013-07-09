@@ -1,4 +1,4 @@
-class CoreController
+class CoreController extends Marionette.Controller
   constructor: ->
     console.log 'controlling', @
 

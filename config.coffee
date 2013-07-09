@@ -1,4 +1,10 @@
 exports.config =
+  server:
+    port: 9999
+
+  conventions:
+    assets: /static(\/|\\)/
+
   plugins:
     jaded:
       staticPatterns: /^app(\/|\\)(.+)\.jade$/
@@ -16,8 +22,9 @@ exports.config =
 
       order:
         before: [
-          'vendor/scripts/jquery-1.10.2.js'
+          'vendor/scripts/jquery.js'
           'vendor/scripts/lodash.underscore.js'
           'vendor/scripts/backbone.js'
           'vendor/scripts/backbone.marionette.js'
+          'vendor/scripts/bootstrap.js'
         ]

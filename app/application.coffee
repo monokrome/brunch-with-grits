@@ -15,8 +15,8 @@ class Application extends Backbone.Marionette.Application
     routers = {}
 
     for component in @components
-      {Router} = require "#{component}/router"
-      {Controller} = require "#{component}/controller"
+      Router = require "#{component}/router"
+      Controller = require "#{component}/controller"
 
       initializers = require "#{component}/initializers"
 

@@ -15,15 +15,16 @@
     "start": "brunch watch --server"
   },
   "dependencies": {
+    "brunch": "~1.6",
+
     "javascript-brunch": ">= 1.0 < 1.7",
     "coffee-script-brunch": ">= 1.0 < 1.7",
+    "uglify-js-brunch": ">= 1.0 < 1.7",
 
     "jaded-brunch": ">= 1.0 < 1.7",
 
     "css-brunch": ">= 1.0 < 1.7",
     "stylus-brunch": ">= 1.0 < 1.7",
-
-    "uglify-js-brunch": ">= 1.0 < 1.7",
     "clean-css-brunch": ">= 1.0 < 1.7"
   },
   "devDependencies": {
