@@ -31,11 +31,11 @@ Clone the project and cd to it:
 
 Install dependencies:
 
-    make
+    npm install
 
 Start a local server:
 
-    make start
+    npm start
 
 Congratulations!  Your application is now running on
 [http://localhost:9999](http://localhost:9999).
