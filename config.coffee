@@ -7,7 +7,7 @@ exports.config =
 
   plugins:
     jaded:
-      staticPatterns: /^app(\/|\\)(.+)\.jade$/
+      staticPatterns: /^app(\/|\\)((?!.*templates).*)\.jade$/
 
   files:
     stylesheets:
