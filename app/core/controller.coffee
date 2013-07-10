@@ -1,5 +1,7 @@
 class CoreController extends Marionette.Controller
-  initialize: (application) ->
+  initialize: (options) ->
+    {application} = options
+
     # TODO Layout/Regions
 
     application.on 'initialize:after', ->
