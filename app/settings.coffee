@@ -1,6 +1,5 @@
 module.exports =
-  defaultComponent: 'example'
+  defaultComponent: 'core'
   components: [
     'core'
-    'example'
   ]
