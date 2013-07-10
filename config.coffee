@@ -9,6 +9,9 @@ exports.config =
     jaded:
       staticPatterns: /^app(\/|\\)((?!.*templates).*)\.jade$/
 
+    stylus:
+      plugins: ['nib']
+
   files:
     stylesheets:
       joinTo:
