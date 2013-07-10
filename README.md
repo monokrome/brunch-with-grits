@@ -16,7 +16,6 @@ Libraries:
 - [Lo-dash][Lo-dash]
 - [Backbone][Backbone]
 - [Marionette][Marionette]
-- [Bootstrap][Bootstrap]
 
 Installation
 ------------
@@ -49,4 +48,3 @@ Congratulations!  Your application is now running on
 [Backbone]: http://backbonejs.org/ "Backbone"
 [Lo-dash]: http://lodash.com/ "Lo-Dash"
 [Marionette]: http://marionettejs.com/ "Marionette"
-[Bootstrap]: http://twitter.github.io/bootstrap/ "Bootstrap"
