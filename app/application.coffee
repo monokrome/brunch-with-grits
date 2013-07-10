@@ -15,7 +15,7 @@ class Application extends Backbone.Marionette.Application
         unless err.message.indexOf 'Cannot find module' is 0
           throw err
 
-        break
+        continue
 
       controller = new Controller application: @
       router = routers[component] = new Router controller: controller
