@@ -12,6 +12,7 @@ class Application extends Backbone.Marionette.Application
         Router = require "#{component}/router"
         Controller = require "#{component}/controller"
       catch err
+        # Bubble non-import errors
         unless err.message.indexOf 'Cannot find module' is 0
           throw err
 
