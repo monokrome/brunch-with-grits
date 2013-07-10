@@ -33,14 +33,8 @@ class Application extends Backbone.Marionette.Application
       # Reprocess router for this router's new routes to be applied.
       router.processAppRoutes controller, router.appRoutes
 
-
-initialize = -> jQuery -> new Application().initialize()
-
   
 # Merge settings into Application object
 _.extend Application.prototype, require 'settings'
 
-module.exports = {
-  Application
-  initialize
-}
+module.exports = Application
