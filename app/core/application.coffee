@@ -14,7 +14,7 @@ class Application extends Backbone.Marionette.Application
 
       catch err
         # Bubble non-import errors
-        unless err.message.indexOf 'Cannot find module' is 0
+        if err.message.indexOf 'Cannot find module' isnt 0
           throw err
 
         continue
@@ -26,7 +26,7 @@ class Application extends Backbone.Marionette.Application
       if router.appRoutes?
         for route, handler of router.appRoutes
           prefix = "#{component}/"
-          unless route.indexOf prefix is 0
+          if route.indexOf prefix isnt 0
             newRoute = "#{prefix}#{route}/"
             router.appRoutes[newRoute] = handler
             delete router.appRoutes[route]
