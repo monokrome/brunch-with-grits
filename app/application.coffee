@@ -1,13 +1,6 @@
 class Application extends Backbone.Marionette.Application
-  components: require 'components'
-
-  regions: {}
-
   initialize: ->
-    @addInitializer @initializeRegions
     @addInitializer @initializeComponents
-
-    @on 'initialize:after', @startHistory
 
     @start()
 
@@ -15,64 +8,32 @@ class Application extends Backbone.Marionette.Application
     routers = {}
 
     for component in @components
-      Router = require "#{component}/router"
-      Controller = require "#{component}/controller"
+      try
+        Router = require "#{component}/router"
+        Controller = require "#{component}/controller"
+      catch err
+        unless err.message.indexOf 'Cannot find module' is 0
+          throw err
 
-      initializers = require "#{component}/initializers"
+        break
 
-      for name, initializer of initializers
-        @addInitializer initializer
+      controller = new Controller application: @
+      router = routers[component] = new Router controller: controller
 
-      controller = new Controller
-        application: @
-
-      router = routers[component] = new Router
-        controller: controller
-
-      # Enforce standard convention for separation of controller methods
-      if router.routes? then throw """
-
-        Please use appRoutes instead of routes in
-        #{controller.constructor.name}. This is the conventional method
-        for routing requests in Marionette.
-
-        See Marionette.AppRouter for details: http://goo.gl/sc0uZ
-
-        """
-
-      # Enforce namespaced URLs prefixed with component name
+      # Prefix component routes that aren't already
       if router.appRoutes?
         for route, handler of router.appRoutes
           prefix = "#{component}/"
-          newRoute = "#{prefix}#{route}/"
-          prefixIndex = route.indexOf prefix
-
-          if prefixIndex == 0
-            throw """
-
-              You do not need to prefix routes in #{router.constructor.name}
-              with "#{prefix}". It will be added automatically. Please remove
-              the prefix to prevent this error.
-
-            """
-
-          # Set up the new route, and remove the old one.
-          router.appRoutes[newRoute] = handler
-          delete router.appRoutes[route]
+          unless route.indexOf prefix is 0
+            newRoute = "#{prefix}#{route}/"
+            router.appRoutes[newRoute] = handler
+            delete router.appRoutes[route]
 
       # Reprocess router for this router's new routes to be applied.
       router.processAppRoutes controller, router.appRoutes
 
-    @components.routers = routers
 
-  initializeRegions: ->
-    if @regions? then @addRegions @regions
-
-  startHistory: ->
-    Backbone.history.start
-      pushState: true
-
-    @freeze?()
-
+# Merge settings into Application object
+_.extend Application.prototype, require 'settings'
 
 module.exports = Application
