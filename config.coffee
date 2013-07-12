@@ -2,9 +2,6 @@ exports.config =
   server:
     port: 9999
 
-  conventions:
-    assets: /static(\/|\\)/
-
   plugins:
     jaded:
       staticPatterns: /^app[\/\\].*[\/\\]jade[\/\\](.+)\.jade$/
