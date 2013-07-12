@@ -1,6 +1,6 @@
-core = require 'core'
+{Router} = require 'core/routers'
 
-class ExampleRouter extends core.Router
+class ExampleRouter extends Router
   appRoutes:
     '': 'index'
     'whoa': 'whoa'
