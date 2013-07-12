@@ -7,6 +7,9 @@ exports.config =
       staticPatterns: /^app[\/\\].*[\/\\]jade[\/\\](.+)\.jade$/
 
   files:
+    templates:
+      joinTo: 'scripts/app.js'
+
     stylesheets:
       joinTo:
         'styles/app.css': /^app/
