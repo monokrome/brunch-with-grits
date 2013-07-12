@@ -9,11 +9,6 @@ merge = (target, source) ->
       target[key] = value
 
 
-# Detects require errors.
-isRequireError = (err) ->
-  err.message.indexOf('Cannot find module') is 0
-
-
 # Application.
 class Application extends Backbone.Marionette.Application
 
@@ -38,36 +33,23 @@ class Application extends Backbone.Marionette.Application
 
     merge @options,
       components:
-        primary: 'core'
-        system: 'core'
-        active: ['core']
+        primary: ''
+        active: []
 
       core:
         history:
           pushState: off
           navToPrimary: off
 
-    # Attempt to merge from options file.
-    try
-      merge @options, require 'options'
-    catch err
-      throw err unless isRequireError err
+    merge @options, require 'options'
 
   # Load active components.
   initComponents: ->
     @routers = {}
 
     for component in @options.components.active
-      # Attempt to require and construct router and controller.
-      try
-        controller = new (require component + '/controller') application: @
-        router = new (require component + '/router') {controller}
-
-      # Bubble unrelated errors, continue to next component.
-      # TODO: This also masks import errors from inside components :(
-      catch err
-        throw err unless isRequireError err
-        continue
+      controller = new (require component + '/controller') application: @
+      router = new (require component + '/router') {controller}
 
       @routers[component] = router
 
