@@ -6,9 +6,6 @@ exports.config =
     jaded:
       staticPatterns: /^app[\/\\].*[\/\\]jade[\/\\](.+)\.jade$/
 
-    stylus:
-      plugins: ['nib']
-
   files:
     stylesheets:
       joinTo:
