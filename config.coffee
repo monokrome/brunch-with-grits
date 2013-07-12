@@ -7,7 +7,7 @@ exports.config =
 
   plugins:
     jaded:
-      staticPatterns: /^app(\/|\\)((?!.*templates).*)\.jade$/
+      staticPatterns: /^app[\/\\].*[\/\\]jade[\/\\](.+)\.jade$/
 
     stylus:
       plugins: ['nib']
@@ -29,5 +29,4 @@ exports.config =
           'vendor/scripts/lodash.underscore.js'
           'vendor/scripts/backbone.js'
           'vendor/scripts/backbone.marionette.js'
-          'vendor/scripts/bootstrap.js'
         ]

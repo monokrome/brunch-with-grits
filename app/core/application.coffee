@@ -1,41 +1,105 @@
+merge = (target, source) ->
+  for item of source
+    if item in target
+      # TODO: Not recursing, must misunderstand in operator.
+      merge target[item], source[item]
+    else
+      target[item] = source[item]
+
+# Application.
 class Application extends Backbone.Marionette.Application
+
+  # Constructor.
+  constructor: (@options) ->
+    super @options
+
+    @initialize()
+
+  # Setup initializers and start the application.
   initialize: ->
-    @addInitializer @initializeComponents
+    @addInitializer @initSettings
+    @addInitializer @initComponents
+    @addInitializer @initRegions
+    @addInitializer @initHistory
 
     @start()
 
-  initializeComponents: ->
-    routers = {}
+  # Detects require errors.
+  _isRequireError: (err) ->
+    err.message.indexOf('Cannot find module') is 0
 
-    for component in @components
+  # It is what it sounds like.
+  _capitalize: (string) ->
+    string.charAt(0).toUpperCase() + string.slice 1
+
+  # Ensure reliable default settings.
+  initSettings: ->
+    @components =
+      primary: 'core'
+      system: 'core'
+      active: ['core']
+      core:
+        history:
+          pushState: off
+          navToPrimary: off
+
+    ## Merge settings into Application object.
+    #merge Application.prototype, require('settings')
+
+  # Load active components.
+  initComponents: ->
+    @routers = {}
+
+    for component in @components.active
+      # Attempt to require and construct router and controller.
       try
-        Router = require "#{component}/router"
-        Controller = require "#{component}/controller"
+        name = @_capitalize(component) + 'Controller'
 
+        controller = new (require component + '/controllers')[name]
+          application: @
+
+        router = new (require component + '/router') {controller}
+
+      # Bubble unrelated errors, continue to next component.
       catch err
-        # Bubble non-import errors
-        if err.message.indexOf 'Cannot find module' isnt 0
-          throw err
-
+        throw err unless @_isRequireError err
         continue
 
-      controller = new Controller application: @
-      router = routers[component] = new Router controller: controller
+      @routers[component] = router
 
-      # Prefix component routes that aren't already
-      if router.appRoutes?
-        for route, handler of router.appRoutes
-          prefix = "#{component}/"
-          if route.indexOf prefix isnt 0
-            newRoute = "#{prefix}#{route}/"
-            router.appRoutes[newRoute] = handler
-            delete router.appRoutes[route]
+      isPrimary = component is @components.primary
 
-      # Reprocess router for this router's new routes to be applied.
+      # Prefix routes with component name.
+      for route, handler of router.appRoutes?
+        prefix = component + '/'
+        newRoute = prefix + route + ('/' if route.length)
+
+        console.log 'newRoute', newRoute
+
+        router.appRoutes[newRoute] = handler
+
+        # Don't delete '' route if isPrimary.
+        if route.length or (not route.length and isPrimary)
+          delete router.appRoutes[route]
+
       router.processAppRoutes controller, router.appRoutes
 
-  
-# Merge settings into Application object
-_.extend Application.prototype, require 'settings'
+  initRegions: ->
+    @regions ?= {}
+
+    @on 'initialize:after', ->
+      @addRegions @regions
+
+    #@regions.layout ?= body: Marionette.Layout
+
+  initHistory: ->
+    @history = Backbone.history
+    settings = @components.core.history
+
+    @on 'initialize:after', ->
+      @history.start settings
+      if @history.location.pathname is '/' and settings.navToPrimary
+        @history.navigate @components.primary
+
 
 module.exports = Application

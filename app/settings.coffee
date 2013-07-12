@@ -1,5 +1,7 @@
 module.exports =
-  defaultComponent: 'core'
-  components: [
-    'core'
-  ]
+  components:
+    primary: 'example'
+    active: [
+      'core'
+      'example'
+    ]
