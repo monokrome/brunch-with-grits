@@ -1,10 +1,18 @@
+# Deep merge objects
+# TODO: This is shoddy.  Boofs arrays because they're treated as dicts.
 merge = (target, source) ->
-  for item of source
-    if item in target
-      # TODO: Not recursing, must misunderstand in operator.
-      merge target[item], source[item]
+  targetKeys = _.keys target
+  for key, value of source
+    if key in targetKeys and _.isObject value
+      merge target[key], value
     else
-      target[item] = source[item]
+      target[key] = value
+
+
+# Detects require errors.
+isRequireError = (err) ->
+  err.message.indexOf('Cannot find module') is 0
+
 
 # Application.
 class Application extends Backbone.Marionette.Application
@@ -17,64 +25,58 @@ class Application extends Backbone.Marionette.Application
 
   # Setup initializers and start the application.
   initialize: ->
-    @addInitializer @initSettings
+    @addInitializer @initOptions
     @addInitializer @initComponents
     @addInitializer @initRegions
     @addInitializer @initHistory
 
     @start()
 
-  # Detects require errors.
-  _isRequireError: (err) ->
-    err.message.indexOf('Cannot find module') is 0
+  # Ensure reliable defaults.
+  initOptions: ->
+    @options ?= {}
 
-  # It is what it sounds like.
-  _capitalize: (string) ->
-    string.charAt(0).toUpperCase() + string.slice 1
+    merge @options,
+      components:
+        primary: 'core'
+        system: 'core'
+        active: ['core']
 
-  # Ensure reliable default settings.
-  initSettings: ->
-    @components =
-      primary: 'core'
-      system: 'core'
-      active: ['core']
       core:
         history:
           pushState: off
           navToPrimary: off
 
-    ## Merge settings into Application object.
-    #merge Application.prototype, require('settings')
+    # Attempt to merge from options file.
+    try
+      merge @options, require 'options'
+    catch err
+      throw err unless isRequireError err
 
   # Load active components.
   initComponents: ->
     @routers = {}
 
-    for component in @components.active
+    for component in @options.components.active
       # Attempt to require and construct router and controller.
       try
-        name = @_capitalize(component) + 'Controller'
-
-        controller = new (require component + '/controllers')[name]
-          application: @
-
+        controller = new (require component + '/controller') application: @
         router = new (require component + '/router') {controller}
 
       # Bubble unrelated errors, continue to next component.
+      # TODO: This also masks import errors from inside components :(
       catch err
-        throw err unless @_isRequireError err
+        throw err unless isRequireError err
         continue
 
       @routers[component] = router
 
-      isPrimary = component is @components.primary
+      isPrimary = component is @options.components.primary
 
       # Prefix routes with component name.
       for route, handler of router.appRoutes?
         prefix = component + '/'
         newRoute = prefix + route + ('/' if route.length)
-
-        console.log 'newRoute', newRoute
 
         router.appRoutes[newRoute] = handler
 
@@ -94,12 +96,12 @@ class Application extends Backbone.Marionette.Application
 
   initHistory: ->
     @history = Backbone.history
-    settings = @components.core.history
+    options = @options.core.history
 
     @on 'initialize:after', ->
-      @history.start settings
-      if @history.location.pathname is '/' and settings.navToPrimary
-        @history.navigate @components.primary
+      @history.start options
+      if @history.location.pathname is '/' and options.navToPrimary
+        @history.navigate @options.components.primary
 
 
 module.exports = Application
