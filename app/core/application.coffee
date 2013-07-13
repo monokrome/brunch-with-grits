@@ -1,16 +1,13 @@
-# Deep merge objects
-# TODO: This is shoddy.  Boofs arrays because they're treated as dicts.
-merge = (target, source) ->
-  targetKeys = _.keys target
-  for key, value of source
-    if key in targetKeys and _.isObject value
-      merge target[key], value
-    else
-      target[key] = value
-
-
 # Application.
 class Application extends Backbone.Marionette.Application
+  components:
+    primary: ''
+    active: []
+
+  core:
+    history:
+      pushState: off
+      navToPrimary: off
 
   # Constructor.
   constructor: (@options) ->
@@ -30,18 +27,6 @@ class Application extends Backbone.Marionette.Application
   # Ensure reliable defaults.
   initOptions: ->
     @options ?= {}
-
-    merge @options,
-      components:
-        primary: ''
-        active: []
-
-      core:
-        history:
-          pushState: off
-          navToPrimary: off
-
-    merge @options, require 'options'
 
   # Load active components.
   initComponents: ->
@@ -84,6 +69,9 @@ class Application extends Backbone.Marionette.Application
       @history.start options
       if @history.location.pathname is '/' and options.navToPrimary
         @history.navigate @options.components.primary
+
+
+_.extend Application, require 'options'
 
 
 module.exports = Application
