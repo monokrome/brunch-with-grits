@@ -6,5 +6,6 @@ class Application extends Backbone.Marionette.Application
 
   startHistory: (options) => Backbone.history.start()
 
+
 module.exports = Application
 
