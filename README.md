@@ -7,7 +7,7 @@ What is this project?
 This is a brunch skeleton which provides the following tools:
 
 - jQuery
-- Underscore
+- LoDash
 - Backbone
 - Marionette
 
