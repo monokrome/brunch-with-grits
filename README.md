@@ -35,7 +35,7 @@ If it all worked out, you should be able to build all libraries into the
 
 You can also have [brunch][brunch] automatically minify the output with:
 
-    brunch build --optimize
+    brunch build --production
 
 If you prefer to leave a process constantly watching your code for changes,
 you can use the following command:
