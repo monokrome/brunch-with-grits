@@ -1,6 +1,8 @@
 Brunch With Grits
 =================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/monokrome/brunch-with-grits.svg)](https://greenkeeper.io/)
+
 What is this project?
 --------------------
 
